@@ -1,0 +1,114 @@
+.portal-item {
+  background-color: aqua;
+  width: 5rem;
+  height: 5rem;
+}
+
+.portal-item--modal {
+  width: 7rem;
+  height: 10rem;
+}
+
+@keyframes ModalFadeIn {
+  0% {
+    transform: translateX(-100vw);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes ModalFadeOut {
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes ModalFadeInOpposite {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes ModalFadeOutOpposite {
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+.portal-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.portal-modal::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  animation: ModalFadeIn 0.4s forwards;
+  z-index: 0;
+  background-color: #66cdfa;
+}
+
+.portal-modal.environment::after {
+  background-color: #93e7a3;
+  animation: ModalFadeInOpposite 0.4s forwards;
+}
+
+.portal-modal--animating-out::after {
+  animation: ModalFadeOut 0.4s forwards;
+}
+
+.portal-modal--animating-out.environment::after {
+  animation: ModalFadeOutOpposite 0.4s forwards;
+}
+
+.portal-image-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(5rem, 1fr));
+  grid-gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.portal-image-list li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portal-image-list img {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.focused-portal-img {
+  width: 500px;
+  height: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.portal-grid-container {
+  display: grid;
+  grid-gap: 7rem;
+  grid-template-columns: repeat(2, 15rem);
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
